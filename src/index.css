@@ -39,7 +39,7 @@ body {
   width: 40rem;
   height: 20rem;
   transform-style: preserve-3d;
-  transition: transform 0.5s;
+  transition: transform 0.2s;
   border-radius: 1rem;
   background-color: white;
   color: black;
@@ -47,23 +47,23 @@ body {
 }
 
 .front {
-  transform: rotateY(0deg);
+  transform: rotateX(0deg);
 }
 
 .back {
-  transform: rotateY(180deg);
+  transform: rotateX(180deg);
 }
 
 .back p {
-  transform: rotateY(180deg);
+  transform: rotateX(180deg);
 }
 
 .flashcard.flipped .front {
-  transform: rotateY(180deg);
+  transform: rotateX(180deg);
 }
 
 .flashcard.flipped .back {
-  transform: rotateY(0deg);
+  transform: rotateX(0deg);
 }
 
 button {
