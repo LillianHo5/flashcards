@@ -4,7 +4,7 @@ Submitted by: **Lillian Ho**
 
 This web app: **A flashcard app that allows users to study various introductory neuroscience topics.**
 
-Time spent: **3** hours spent in total
+Time spent: **4** hours spent in total
 
 ## Required Features
 
@@ -19,8 +19,8 @@ The following **required** functionality is completed:
 The following **optional** features are implemented:
 
 - [ ] Cards contains images in addition to or in place of text
-- [ ] Cards have different visual styles such as color based on their category
-  - [ ] *visual style implemented*
+- [x] Cards have different visual styles such as color based on their category
+  - [x] Color based on question difficulty
 
 The following **additional** features are implemented:
 
