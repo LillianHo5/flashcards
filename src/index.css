@@ -1,0 +1,76 @@
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  justify-content: center;
+  align-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #b3cde0;
+}
+
+.App {
+  padding: 2rem 6rem;
+  background-color: #6497b1;
+  color: white;
+  text-shadow: 2px 2px #b3cde0;
+  border-radius: 2rem;
+}
+
+.flashcard-stack {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-shadow: 1px 1px #b3cde0;
+}
+
+.flashcard {
+  width: 40rem;
+  height: 20rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.front,
+.back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40rem;
+  height: 20rem;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+  border-radius: 1rem;
+  background-color: white;
+  color: black;
+  text-shadow: none;
+}
+
+.front {
+  transform: rotateY(0deg);
+}
+
+.back {
+  transform: rotateY(180deg);
+}
+
+.back p {
+  transform: rotateY(180deg);
+}
+
+.flashcard.flipped .front {
+  transform: rotateY(180deg);
+}
+
+.flashcard.flipped .back {
+  transform: rotateY(0deg);
+}
+
+button {
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  margin-top: 1rem;
+  background-color: #005b96;
+  color: white;
+}
