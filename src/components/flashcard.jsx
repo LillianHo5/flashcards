@@ -10,18 +10,20 @@ const FlashCard = (props) => {
 
     return (
         <div className={["flashcard", props.isFlipped ? "flipped" : ""]}
-            style={{
-                backgroundColor: color,
-                borderRadius: "1rem"
-            }}
             onClick={props.flip} >
             <div className="flashcard-inner">
                 {props.isFlipped ?
-                    <div className="back">
+                    <div className="back" style={{
+                        backgroundColor: color,
+                        borderRadius: "1rem"
+                    }}>
                         <p className="answer">{props.answer}</p>
                     </div>
                     :
-                    <div className="front">
+                    <div className="front" style={{
+                        backgroundColor: color,
+                        borderRadius: "1rem"
+                    }}>
                         <p className="question">{props.question}</p>
                     </div>}
             </div>

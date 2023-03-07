@@ -28,7 +28,7 @@ body {
 .flashcard {
   width: 40rem;
   height: 20rem;
-  border-radius: 1rem !important;
+  border-radius: 1rem;
 }
 
 .front,
@@ -39,7 +39,8 @@ body {
   width: 40rem;
   height: 20rem;
   transform-style: preserve-3d;
-  transition: transform 0.2s;
+  transition: transform 0.5s;
+  border-radius: 1rem;
   color: black;
   text-shadow: none;
 }
