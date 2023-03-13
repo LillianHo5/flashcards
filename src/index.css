@@ -73,6 +73,10 @@ form {
   margin-top: 10px;
 }
 
+input {
+  border-radius: 5px;
+}
+
 button {
   padding: 1rem 2rem;
   border-radius: 1rem;
@@ -80,4 +84,21 @@ button {
   margin-right: 1rem;
   background-color: #005b96;
   color: white;
+  border-color: white;
+}
+
+#correct {
+  background-color: #77dd77;
+  border-color: #77dd77;
+}
+
+#wrong {
+  border-color: #faa0a0;
+  background-color: #faa0a0;
+}
+
+#submit-guess {
+  border-radius: 5px;
+  background-color: white;
+  color: #005b96;
 }

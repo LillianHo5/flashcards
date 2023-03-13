@@ -27,7 +27,7 @@ const FlashCard = (props) => {
                         <p className="question">{props.question}</p>
                     </div>}
             </div>
-        </div >
+        </div>
     )
 }
 

@@ -5,6 +5,9 @@ import FlashCard from "./flashcard";
 const Stack = () => {
     const [isFlipped, setFlipped] = useState(false);
     const [currentCardIndex, setCurrentCardIndex] = useState(0);
+    const [input, setInput] = useState('');
+    const [correct_answer, setCheckedAnswer] = useState('');
+
     const cards = [
         { question: 'What are the two main divisions of the nervous system?', answer: 'Central Nervous System and Peripheral Nervous System', difficulty: 'Hard' },
         { question: 'Which of the following glial cells is found in the peripheral nervous system?', answer: 'Schwann Cells', difficulty: 'Normal' },
@@ -26,6 +29,7 @@ const Stack = () => {
         // Have flashcard face question by default 
         setFlipped(false);
 
+        // Prevents users from going beyond the list of flashcards offered 
         if (currentCardIndex < cards.length - 1) {
             setCurrentCardIndex(currentCardIndex + 1);
             document.getElementById("back-btn").disabled = false;
@@ -40,11 +44,25 @@ const Stack = () => {
         // Have flashcard face question by default 
         setFlipped(false);
 
+        // Prevents users from going beyond the list of flashcards offered 
         if (currentCardIndex > 0) {
             setCurrentCardIndex(currentCardIndex - 1);
             document.getElementById("next-btn").disabled = false;
         } else if (currentCardIndex <= 0) {
             document.getElementById("back-btn").disabled = true;
+        }
+    }
+
+    const handleInput = (e) => {
+        setInput(e.target.value);
+    }
+
+    const onCheckAnswer = (e) => {
+        e.preventDefault();
+        if (input != cards[currentCardIndex].answer) {
+            setCheckedAnswer('wrong');
+        } else {
+            setCheckedAnswer('correct');
         }
     }
 
@@ -55,12 +73,12 @@ const Stack = () => {
                 answer={cards[currentCardIndex].answer} isFlipped={isFlipped} flip={flipCard}
                 difficulty={cards[currentCardIndex].difficulty}
             />
-            <form>
+            <form onSubmit={onCheckAnswer}>
                 <label>
                     Guess your answer here:&nbsp;
-                    <input type="text" name="guess" />
+                    <input type="text" id={correct_answer} value={input} onChange={handleInput} />
                 </label>
-                <input type="submit" value="Guess" />
+                <input type="submit" id="submit-guess" value="Guess" />
             </form>
             <div className="buttons">
                 <button id="back-btn" onClick={prevCard}>Back</button>
