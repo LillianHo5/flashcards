@@ -36,7 +36,15 @@ const Stack = () => {
                 answer={cards[currentCardIndex].answer} isFlipped={isFlipped} flip={flipCard}
                 difficulty={cards[currentCardIndex].difficulty}
             />
+            <form>
+                <label>
+                    Guess your answer here:&nbsp;
+                    <input type="text" name="guess" />
+                </label>
+                <input type="submit" value="Guess" />
+            </form>
             <div className="buttons">
+                <button>Back</button>
                 <button onClick={nextCard}>Next</button>
             </div>
         </div>
