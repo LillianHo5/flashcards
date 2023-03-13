@@ -65,12 +65,22 @@ body {
   transform: rotateX(0deg);
 }
 
+.streak {
+  display: flex;
+  flex-direction: row;
+}
+
+.streak h4 {
+  margin-top: 0rem;
+  margin-right: 1rem;
+}
+
 label {
   margin: 10px;
 }
 
 form {
-  margin-top: 10px;
+  margin: 20px 0px 5px 0px;
 }
 
 input {
@@ -106,4 +116,9 @@ button:disabled {
   border-radius: 5px;
   background-color: white;
   color: #005b96;
+}
+
+#shuffle-btn {
+  background-color: #b3cde0;
+  padding: 0.5rem 1rem;
 }

@@ -21,6 +21,8 @@ const Stack = () => {
         { question: 'The immune cells of the central nervous system are:', answer: 'Microglia', difficulty: 'Easy' },
         { question: 'If the membrane potential changes from +30 mV to -65 mV, this is called?', answer: 'Repolarization', difficulty: 'Normal' }
     ]);
+    const [currentStreak, setCurrentStreak] = useState(0);
+    const [longestStreak, setLongestStreak] = useState(0);
 
     // Fisher-Yates Shuffle: https://medium.com/@omar.rashid2/fisher-yates-shuffle-a2aa15578d2f 
     const shuffleCards = () => {
@@ -87,16 +89,27 @@ const Stack = () => {
 
     const onCheckAnswer = (e) => {
         e.preventDefault();
-        if (input != cards[currentCardIndex].answer) {
+        const userInput = input.toLowerCase();
+        const flashcardAnswer = cards[currentCardIndex].answer.toLowerCase();
+        if (userInput != flashcardAnswer) {
             setCheckedAnswer('wrong');
+            if (currentStreak > longestStreak) {
+                setLongestStreak(currentStreak);
+            }
+            setCurrentStreak(0);
         } else {
             setCheckedAnswer('correct');
+            setCurrentStreak(currentStreak + 1);
         }
     }
 
     return (
         <div className="flashcard-stack">
             <h4>Number of flashcards: {cards.length}</h4>
+            <div className="streak">
+                <h4>Current Streak: {currentStreak}</h4>
+                <h4>Longest Streak: {longestStreak}</h4>
+            </div>
             <FlashCard question={cards[currentCardIndex].question}
                 answer={cards[currentCardIndex].answer} isFlipped={isFlipped} flip={flipCard}
                 difficulty={cards[currentCardIndex].difficulty}
@@ -111,8 +124,8 @@ const Stack = () => {
             <div className="buttons">
                 <button id="back-btn" onClick={prevCard} disabled={isBackDisabled}>Back</button>
                 <button id="next-btn" onClick={nextCard} disabled={isNextDisabled}>Next</button>
+                <button id="shuffle-btn" onClick={shuffleCards}>Shuffle</button>
             </div>
-            <button id="shuffle-btn" onClick={shuffleCards}>Shuffle</button>
         </div>
     );
 }
