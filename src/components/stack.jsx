@@ -25,8 +25,27 @@ const Stack = () => {
     const nextCard = () => {
         // Have flashcard face question by default 
         setFlipped(false);
+
+        if (currentCardIndex < cards.length - 1) {
+            setCurrentCardIndex(currentCardIndex + 1);
+            document.getElementById("back-btn").disabled = false;
+        } else if (currentCardIndex >= cards.length - 1) {
+            document.getElementById("next-btn").disabled = true;
+        }
         // Select a random index from [0, cards.length)
-        setCurrentCardIndex(Math.floor(Math.random() * (cards.length)));
+        //setCurrentCardIndex(Math.floor(Math.random() * (cards.length)));
+    }
+
+    const prevCard = () => {
+        // Have flashcard face question by default 
+        setFlipped(false);
+
+        if (currentCardIndex > 0) {
+            setCurrentCardIndex(currentCardIndex - 1);
+            document.getElementById("next-btn").disabled = false;
+        } else if (currentCardIndex <= 0) {
+            document.getElementById("back-btn").disabled = true;
+        }
     }
 
     return (
@@ -44,8 +63,8 @@ const Stack = () => {
                 <input type="submit" value="Guess" />
             </form>
             <div className="buttons">
-                <button>Back</button>
-                <button onClick={nextCard}>Next</button>
+                <button id="back-btn" onClick={prevCard}>Back</button>
+                <button id="next-btn" onClick={nextCard}>Next</button>
             </div>
         </div>
     );
