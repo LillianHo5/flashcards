@@ -87,6 +87,11 @@ button {
   border-color: white;
 }
 
+button:disabled {
+  background-color: #cccccc;
+  color: #666666;
+}
+
 #correct {
   background-color: #77dd77;
   border-color: #77dd77;

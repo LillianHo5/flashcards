@@ -28,6 +28,8 @@ const Stack = () => {
     const nextCard = () => {
         // Have flashcard face question by default 
         setFlipped(false);
+        setCheckedAnswer('');
+        setInput('');
 
         // Prevents users from going beyond the list of flashcards offered 
         if (currentCardIndex < cards.length - 1) {
@@ -43,6 +45,8 @@ const Stack = () => {
     const prevCard = () => {
         // Have flashcard face question by default 
         setFlipped(false);
+        setCheckedAnswer('');
+        setInput('');
 
         // Prevents users from going beyond the list of flashcards offered 
         if (currentCardIndex > 0) {
