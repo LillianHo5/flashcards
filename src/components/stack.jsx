@@ -7,10 +7,9 @@ const Stack = () => {
     const [input, setInput] = useState('');
     const [currentCardIndex, setCurrentCardIndex] = useState(0);
     const [correct_answer, setCheckedAnswer] = useState('');
-    const [isBackDisabled, setBackDisabled] = useState(false);
+    const [isBackDisabled, setBackDisabled] = useState(true);
     const [isNextDisabled, setNextDisabled] = useState(false);
-
-    const cards = [
+    const [cards, setCards] = useState([
         { question: 'What are the two main divisions of the nervous system?', answer: 'Central Nervous System and Peripheral Nervous System', difficulty: 'Hard' },
         { question: 'Which of the following glial cells is found in the peripheral nervous system?', answer: 'Schwann Cells', difficulty: 'Normal' },
         { question: 'Which of the following are glial cells of the central nervous system?', answer: 'Astrocytes, Ependymal Cells, Oligodendrocytes, Microglia', difficulty: 'Hard' },
@@ -21,7 +20,26 @@ const Stack = () => {
         { question: 'A neuroscientist who studies the effects of drugs on mood and behavior is a...', answer: 'Behavorial Neuroscientist', difficulty: 'Normal' },
         { question: 'The immune cells of the central nervous system are:', answer: 'Microglia', difficulty: 'Easy' },
         { question: 'If the membrane potential changes from +30 mV to -65 mV, this is called?', answer: 'Repolarization', difficulty: 'Normal' }
-    ];
+    ]);
+
+    // Fisher-Yates Shuffle: https://medium.com/@omar.rashid2/fisher-yates-shuffle-a2aa15578d2f 
+    const shuffleCards = () => {
+        const shuffledCards = [];
+        while (cards.length > 0) {
+            const randomIndex = Math.floor(Math.random() * cards.length);
+            shuffledCards.push(cards[randomIndex]);
+            cards.splice(randomIndex, 1);
+        }
+        setCards(shuffledCards);
+
+        // Reset everything
+        setCurrentCardIndex(0);
+        setFlipped(false);
+        setCheckedAnswer('');
+        setInput('');
+        setBackDisabled(true);
+        setNextDisabled(false);
+    }
 
     const flipCard = () => {
         setFlipped(!isFlipped);
@@ -94,6 +112,7 @@ const Stack = () => {
                 <button id="back-btn" onClick={prevCard} disabled={isBackDisabled}>Back</button>
                 <button id="next-btn" onClick={nextCard} disabled={isNextDisabled}>Next</button>
             </div>
+            <button id="shuffle-btn" onClick={shuffleCards}>Shuffle</button>
         </div>
     );
 }
