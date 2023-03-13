@@ -4,9 +4,11 @@ import FlashCard from "./flashcard";
 
 const Stack = () => {
     const [isFlipped, setFlipped] = useState(false);
-    const [currentCardIndex, setCurrentCardIndex] = useState(0);
     const [input, setInput] = useState('');
+    const [currentCardIndex, setCurrentCardIndex] = useState(0);
     const [correct_answer, setCheckedAnswer] = useState('');
+    const [isBackDisabled, setBackDisabled] = useState(false);
+    const [isNextDisabled, setNextDisabled] = useState(false);
 
     const cards = [
         { question: 'What are the two main divisions of the nervous system?', answer: 'Central Nervous System and Peripheral Nervous System', difficulty: 'Hard' },
@@ -34,9 +36,11 @@ const Stack = () => {
         // Prevents users from going beyond the list of flashcards offered 
         if (currentCardIndex < cards.length - 1) {
             setCurrentCardIndex(currentCardIndex + 1);
-            document.getElementById("back-btn").disabled = false;
+            //document.getElementById("back-btn").disabled = false;
+            setBackDisabled(false);
         } else if (currentCardIndex >= cards.length - 1) {
             document.getElementById("next-btn").disabled = true;
+            setNextDisabled(true);
         }
         // Select a random index from [0, cards.length)
         //setCurrentCardIndex(Math.floor(Math.random() * (cards.length)));
@@ -51,9 +55,11 @@ const Stack = () => {
         // Prevents users from going beyond the list of flashcards offered 
         if (currentCardIndex > 0) {
             setCurrentCardIndex(currentCardIndex - 1);
-            document.getElementById("next-btn").disabled = false;
+            //document.getElementById("next-btn").disabled = false;
+            setNextDisabled(false);
         } else if (currentCardIndex <= 0) {
-            document.getElementById("back-btn").disabled = true;
+            //document.getElementById("back-btn").disabled = true;
+            setBackDisabled(true);
         }
     }
 
@@ -85,8 +91,8 @@ const Stack = () => {
                 <input type="submit" id="submit-guess" value="Guess" />
             </form>
             <div className="buttons">
-                <button id="back-btn" onClick={prevCard}>Back</button>
-                <button id="next-btn" onClick={nextCard}>Next</button>
+                <button id="back-btn" onClick={prevCard} disabled={isBackDisabled}>Back</button>
+                <button id="next-btn" onClick={nextCard} disabled={isNextDisabled}>Next</button>
             </div>
         </div>
     );
