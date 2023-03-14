@@ -4,7 +4,7 @@ Submitted by: **Lillian Ho**
 
 This web app: **A flashcard app that allows users to study various introductory neuroscience topics.**
 
-Time spent: **4** hours spent in total
+Time spent: **4.5** hours spent in total
 
 ## Required Features
 
@@ -26,6 +26,7 @@ The following **optional** features are implemented:
 The following **additional** features are implemented:
 
 * [ ] List anything else that you added to improve the site's functionality!
+  * [x] Disable next/back button if the user reaches the front or back of the flashcard list
 
 ## Video Walkthrough
 
