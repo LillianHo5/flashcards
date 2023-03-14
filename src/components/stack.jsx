@@ -9,6 +9,7 @@ const Stack = () => {
     const [correct_answer, setCheckedAnswer] = useState('');
     const [isBackDisabled, setBackDisabled] = useState(true);
     const [isNextDisabled, setNextDisabled] = useState(false);
+    const [isMastered, setMastered] = useState(false);
     const [cards, setCards] = useState([
         { question: 'What are the two main divisions of the nervous system?', answer: 'Central Nervous System and Peripheral Nervous System', difficulty: 'Hard' },
         { question: 'Which of the following glial cells is found in the peripheral nervous system?', answer: 'Schwann Cells', difficulty: 'Normal' },
@@ -103,6 +104,10 @@ const Stack = () => {
         }
     }
 
+    const handleMaster = () => {
+        setMastered(!isMastered);
+    }
+
     return (
         <div className="flashcard-stack">
             <h4>Number of flashcards: {cards.length}</h4>
@@ -112,7 +117,7 @@ const Stack = () => {
             </div>
             <FlashCard question={cards[currentCardIndex].question}
                 answer={cards[currentCardIndex].answer} isFlipped={isFlipped} flip={flipCard}
-                difficulty={cards[currentCardIndex].difficulty}
+                difficulty={cards[currentCardIndex].difficulty} mastered={isMastered}
             />
             <form onSubmit={onCheckAnswer}>
                 <label>
@@ -122,6 +127,7 @@ const Stack = () => {
                 <input type="submit" id="submit-guess" value="Guess" />
             </form>
             <div className="buttons">
+                <button id="master-btn" onClick={handleMaster}>{isMastered ? "Mastered" : "Not Mastered"}</button>
                 <button id="back-btn" onClick={prevCard} disabled={isBackDisabled}>Back</button>
                 <button id="next-btn" onClick={nextCard} disabled={isNextDisabled}>Next</button>
                 <button id="shuffle-btn" onClick={shuffleCards}>Shuffle</button>

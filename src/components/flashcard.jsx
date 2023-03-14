@@ -1,6 +1,8 @@
 import React from "react";
 
 const FlashCard = (props) => {
+    const isMastered = props.mastered;
+
     const color =
         props.difficulty === "Hard"
             ? "#FFD6C9"
@@ -22,8 +24,9 @@ const FlashCard = (props) => {
                     :
                     <div className="front" style={{
                         backgroundColor: color,
-                        borderRadius: "1rem"
+                        borderRadius: "1rem",
                     }}>
+                        <img src="src/assets/star.webp" className={isMastered ? "mastered" : "not-mastered"} alt="Logo" />
                         <p className="question">{props.question}</p>
                     </div>}
             </div>

@@ -49,6 +49,18 @@ body {
   transform: rotateX(0deg);
 }
 
+.front img {
+  width: 4rem;
+}
+
+.not-mastered {
+  display: none;
+}
+
+.mastered {
+  display: block;
+}
+
 .back {
   transform: rotateX(180deg);
 }
@@ -87,6 +99,10 @@ input {
   border-radius: 5px;
 }
 
+img {
+  width: 5rem;
+}
+
 button {
   padding: 1rem 2rem;
   border-radius: 1rem;
@@ -121,4 +137,8 @@ button:disabled {
 #shuffle-btn {
   background-color: #b3cde0;
   padding: 0.5rem 1rem;
+}
+
+#master-btn {
+  background-color: gold;
 }
